@@ -1,0 +1,24 @@
+language: node_js
+node_js:
+  - node
+deploy:
+  provider: s3
+  access_key_id: AKIAJLDRBS4W3AITNXTQ
+  secret_access_key:
+    secure: hJiE4m5RLJzrfzr1Ek85wL1DW8p7tpRgvX5cEe99O8OBkeh4Jrb8Oq+OEExHof2MoNIgbS2RX18/bOhR3nA3fQ25vrw0G9F3PX8kp05EPRhfx9FDlarzUdpb7QT80ae2FAArWAXsiK6Or2vDON87pT0M9gT+zgdrmIN/aHy8DmDb/1x9y7JNVUeUzWmapzjqRR9eMTtDD0C4+/zwcR6Nm3V7cqfKyuAxv/lnp3M/M3x4ewRrrr2rgwxiy2KhIqw3XZEJLsXxVoc2mcSRaZFx6iHi2o+UbvZgGlq5GZf2Uy+xb615jbCzBvTBILpNM1SQsPgNu56Va1nIbcDDwOkRiN/DhSKIhQN9Ym9wgilmXwnhJNhM6TYvaIsVNK0gjqyHLg0zyPob847S50Cirtdrht1iwpNfTbzC7Ob1KGoXkHDzXEneqFHOj43tMm2ItFLkk2Q20SfP1/ET7KnsfoWxYUGHhKojw4hyuzRrxi9lh66MDZeKXYiCCKqNyE3ACbuQsN4OBS442WeGsCRPMGJ9nVqrpaRFGcwNpoDTj1FPDF1y7oDpc6/8mMjkdzKtwnW9HZYfTOZbjogBy2fULURowJKBL8oArLay1FmiAlDS+tWLxL46d0acTGJIJkexFUI85FZHpj/L6ckDtdwDLZOJ68UVsOlxtvOf1KMsHE3KSZk=
+  local_dir: build
+  region: us-west-2
+  bucket: mfisher.riteside.ca
+  upload_dir: develop/$TRAVIS_BUILD_NUMBER
+  skip_cleanup: true
+  on:
+    branch: develop
+notifications:
+  slack:
+    rooms:
+      secure: IXLbjfT6qbWAwJFnmi/C9oFM41Sf0nnk6uWEDpyaGRxbMciBL65DKxeCuREbQqPHu772Lfu27xPNP9JP0lSsEPbpvXi/+JsGSaHUT7u3/9UIV7v3GuFKMR67G15H8xr/4cjaV6yCuNjNab/qpyYbeC9bELfcLJYXFz63ThEjepC3nI+lqe7/pj2/FqM2wGZ/CN4gz8hy7gnKBHMkerQ9kXiW7DVHjw1O3rSZT3UYzr9QA3OkzC00XNDPSG2UOYLmjbh3TNsXvOb/GbJNhlI0/6FJDYdcRU8bJEXJNsfU0khz9Av9K93sEtktL24CH6E/NsaYVNvEku5nQlQQ2BLdX14BKl38QO1wlXQOaAZsTbq4g0my/i+mDHAFX+kM6GgU+itEuu21DiIj2dYoP99lV4MgcAAh08U7peVsPdxzMou0e7tZuWXkyJaZzU/Cj6wM7x7J2zbeyqxKNHHCQiTawvGfSpaRwV+4iBD2rU3FEwazJaCN8jWJUXtn/AOJuSYak21Dti0rGP4t1Ppb+wEL2LAIzDR5TjOglkoRPvm605jEVmpyaryAhD1U83Scn3vMyg3H/naWNlI2d5d87S3fklg6uZVci+EanDEm8xh7eeqH7D+ZheoxPTYVTqwlvlrbTt8FOUINTYQYheszl+RJT5uwpPROZ2z5r9X19IEJq9o=
+    template:
+      - "Build <%{build_url}|#%{build_number}> (<%{compare_url}|%{commit}>) of %{repository_slug}@%{branch} by %{author} passed in %{elapsed_time}"
+      - "A new build was deployed to http://mfisher.riteside.ca/develop/%{build_number}"
+    on_success: always
+    on_failure: never

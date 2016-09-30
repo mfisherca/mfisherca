@@ -1,0 +1,23 @@
+{
+  "name": "mfisherca",
+  "version": "0.1.0",
+  "description": "mfisher.ca website",
+  "scripts": {
+    "test": "gulp"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mfisherca/mfisherca.git"
+  },
+  "author": "mike@mfisher.ca",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/mfisherca/mfisherca/issues"
+  },
+  "homepage": "https://github.com/mfisherca/mfisherca#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-sass": "^2.3.2",
+    "gulp-version-number": "^0.1.5"
+  }
+}
