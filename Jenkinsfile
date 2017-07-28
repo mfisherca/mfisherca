@@ -18,19 +18,18 @@ pipeline {
       steps {
         parallel(
           "Source Test": {
-            sh 'python j2-lint.py test.yaml.j2'
+            sh 'python --version'
             
           },
           "Build": {
-            sh 'j2 test.yaml.j2 > ${build_output}'
-            
+            sh 'ls -la'
           }
         )
       }
     }
     stage('Build Test') {
       steps {
-        sh 'yamllint ${build_output}'
+        sh 'printenv'
       }
     }
     stage('Archive') {
