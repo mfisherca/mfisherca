@@ -9,9 +9,9 @@ pipeline {
   stages {
     stage('Install') {
       steps {
-        echo 'Begin ${build_name} install phase.'
+        echo 'Begin ${env.build_name} install phase.'
         sh 'pip install j2cli[yaml] yamllint'
-        echo 'End ${build_name} install phase.'
+        echo 'End ${env.build_name} install phase.'
       }
     }
     stage('Pre-Build') {
@@ -35,7 +35,7 @@ pipeline {
     }
     stage('Archive') {
       steps {
-        archiveArtifacts(artifacts: '${build_output}', onlyIfSuccessful: true)
+        archiveArtifacts(artifacts: '${env.build_output}', onlyIfSuccessful: true)
       }
     }
   }
